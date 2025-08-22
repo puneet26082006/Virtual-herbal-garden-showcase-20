@@ -2,7 +2,7 @@ import "dotenv/config";
 import express from "express";
 import cors from "cors";
 import { handleDemo } from "./routes/demo";
-import { getPlants, getPlantById, getPlantCategories, getFeaturedPlants } from "./routes/plants";
+import { getPlants, getPlantById, getPlantCategories, getFeaturedPlants, getPlantStatistics } from "./routes/plants";
 import { login, register, getCurrentUser, logout, requireAdmin } from "./routes/auth";
 
 export function createServer() {
@@ -25,6 +25,7 @@ export function createServer() {
   app.get("/api/plants", getPlants);
   app.get("/api/plants/featured", getFeaturedPlants);
   app.get("/api/plants/categories", getPlantCategories);
+  app.get("/api/plants/statistics", getPlantStatistics);
   app.get("/api/plants/:id", getPlantById);
 
   // Authentication routes
@@ -42,6 +43,30 @@ export function createServer() {
         { id: "2", email: "user@example.com", name: "Plant Enthusiast", role: "user" }
       ]
     });
+  });
+
+  // Admin plant management routes
+  app.get("/api/admin/plants/statistics", requireAdmin, getPlantStatistics);
+
+  // Admin category management
+  app.get("/api/admin/categories", requireAdmin, getPlantCategories);
+  app.post("/api/admin/categories", requireAdmin, (req, res) => {
+    // Mock category creation
+    res.json({ message: "Category created successfully", category: req.body });
+  });
+  app.put("/api/admin/categories/:id", requireAdmin, (req, res) => {
+    // Mock category update
+    res.json({ message: "Category updated successfully", category: req.body });
+  });
+  app.delete("/api/admin/categories/:id", requireAdmin, (req, res) => {
+    // Mock category deletion
+    res.json({ message: "Category deleted successfully" });
+  });
+
+  // User permission management
+  app.post("/api/admin/users/:id/permissions", requireAdmin, (req, res) => {
+    // Mock permission assignment
+    res.json({ message: "Permissions updated successfully" });
   });
 
   return app;
