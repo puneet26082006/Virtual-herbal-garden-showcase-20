@@ -251,7 +251,6 @@ export default function Index() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/login">
                 <Button size="lg" variant="secondary" className="w-full sm:w-auto">
-                  <User className="mr-2 h-4 w-4" />
                   Get Started Free
                 </Button>
               </Link>
