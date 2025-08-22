@@ -10,6 +10,7 @@ import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import Login from "./pages/Login";
 import Plants from "./pages/Plants";
+import PlantDetail from "./pages/PlantDetail";
 import Garden from "./pages/Garden";
 import Admin from "./pages/Admin";
 import About from "./pages/About";
@@ -26,6 +27,7 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/login" element={<Login />} />
           <Route path="/plants" element={<Plants />} />
+          <Route path="/plants/:id" element={<PlantDetail />} />
           <Route path="/garden" element={<Garden />} />
           <Route path="/admin" element={<Admin />} />
           <Route path="/about" element={<About />} />
