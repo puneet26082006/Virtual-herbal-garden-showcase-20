@@ -28,11 +28,11 @@ interface PlantSearchBarProps {
   isLoading?: boolean;
 }
 
-export default function PlantSearchBar({ 
-  onSearch, 
-  categories, 
-  totalResults, 
-  isLoading 
+export default function PlantSearchBar({
+  onSearch,
+  categories,
+  totalResults,
+  isLoading,
 }: PlantSearchBarProps) {
   const [searchQuery, setSearchQuery] = useState("");
   const [showFilters, setShowFilters] = useState(false);
@@ -43,37 +43,45 @@ export default function PlantSearchBar({
     sunlight: [],
     water: [],
     toxicity: [],
-    tags: []
+    tags: [],
   });
 
   const difficultyOptions = [
     { id: "easy", label: "Easy" },
     { id: "moderate", label: "Moderate" },
-    { id: "challenging", label: "Challenging" }
+    { id: "challenging", label: "Challenging" },
   ];
 
   const sunlightOptions = [
     { id: "full-sun", label: "Full Sun" },
     { id: "partial-sun", label: "Partial Sun" },
-    { id: "shade", label: "Shade" }
+    { id: "shade", label: "Shade" },
   ];
 
   const waterOptions = [
     { id: "low", label: "Low Water" },
     { id: "moderate", label: "Moderate Water" },
-    { id: "high", label: "High Water" }
+    { id: "high", label: "High Water" },
   ];
 
   const toxicityOptions = [
     { id: "non-toxic", label: "Non-toxic" },
     { id: "mildly-toxic", label: "Mildly Toxic" },
     { id: "toxic", label: "Toxic" },
-    { id: "highly-toxic", label: "Highly Toxic" }
+    { id: "highly-toxic", label: "Highly Toxic" },
   ];
 
   const popularTags = [
-    "drought-tolerant", "indoor-plant", "pollinator-friendly", "aromatic",
-    "easy-to-grow", "perennial", "annual", "native", "medicinal", "edible"
+    "drought-tolerant",
+    "indoor-plant",
+    "pollinator-friendly",
+    "aromatic",
+    "easy-to-grow",
+    "perennial",
+    "annual",
+    "native",
+    "medicinal",
+    "edible",
   ];
 
   // Debounced search effect
@@ -92,13 +100,16 @@ export default function PlantSearchBar({
     onSearch(filters);
   }, [filters]);
 
-  const handleFilterToggle = (filterType: keyof SearchFilters, value: string) => {
-    setFilters(prev => {
+  const handleFilterToggle = (
+    filterType: keyof SearchFilters,
+    value: string,
+  ) => {
+    setFilters((prev) => {
       const currentValues = prev[filterType] as string[];
       const newValues = currentValues.includes(value)
-        ? currentValues.filter(v => v !== value)
+        ? currentValues.filter((v) => v !== value)
         : [...currentValues, value];
-      
+
       return { ...prev, [filterType]: newValues };
     });
   };
@@ -112,51 +123,61 @@ export default function PlantSearchBar({
       sunlight: [],
       water: [],
       toxicity: [],
-      tags: []
+      tags: [],
     });
   };
 
   const getActiveFilterCount = () => {
-    return filters.categories.length + 
-           filters.difficulty.length + 
-           filters.sunlight.length + 
-           filters.water.length + 
-           filters.toxicity.length + 
-           filters.tags.length;
+    return (
+      filters.categories.length +
+      filters.difficulty.length +
+      filters.sunlight.length +
+      filters.water.length +
+      filters.toxicity.length +
+      filters.tags.length
+    );
   };
 
   const getActiveFilters = () => {
     const active = [];
-    
-    filters.categories.forEach(cat => {
-      const category = categories.find(c => c.id === cat);
-      if (category) active.push({ type: "category", value: cat, label: category.name });
+
+    filters.categories.forEach((cat) => {
+      const category = categories.find((c) => c.id === cat);
+      if (category)
+        active.push({ type: "category", value: cat, label: category.name });
     });
-    
-    filters.difficulty.forEach(diff => {
-      const difficulty = difficultyOptions.find(d => d.id === diff);
-      if (difficulty) active.push({ type: "difficulty", value: diff, label: difficulty.label });
+
+    filters.difficulty.forEach((diff) => {
+      const difficulty = difficultyOptions.find((d) => d.id === diff);
+      if (difficulty)
+        active.push({
+          type: "difficulty",
+          value: diff,
+          label: difficulty.label,
+        });
     });
-    
-    filters.sunlight.forEach(sun => {
-      const sunlight = sunlightOptions.find(s => s.id === sun);
-      if (sunlight) active.push({ type: "sunlight", value: sun, label: sunlight.label });
+
+    filters.sunlight.forEach((sun) => {
+      const sunlight = sunlightOptions.find((s) => s.id === sun);
+      if (sunlight)
+        active.push({ type: "sunlight", value: sun, label: sunlight.label });
     });
-    
-    filters.water.forEach(wat => {
-      const water = waterOptions.find(w => w.id === wat);
+
+    filters.water.forEach((wat) => {
+      const water = waterOptions.find((w) => w.id === wat);
       if (water) active.push({ type: "water", value: wat, label: water.label });
     });
-    
-    filters.toxicity.forEach(tox => {
-      const toxicity = toxicityOptions.find(t => t.id === tox);
-      if (toxicity) active.push({ type: "toxicity", value: tox, label: toxicity.label });
+
+    filters.toxicity.forEach((tox) => {
+      const toxicity = toxicityOptions.find((t) => t.id === tox);
+      if (toxicity)
+        active.push({ type: "toxicity", value: tox, label: toxicity.label });
     });
-    
-    filters.tags.forEach(tag => {
+
+    filters.tags.forEach((tag) => {
       active.push({ type: "tags", value: tag, label: tag });
     });
-    
+
     return active;
   };
 
@@ -183,7 +204,7 @@ export default function PlantSearchBar({
             </div>
           )}
         </div>
-        
+
         <Button
           variant={showFilters ? "default" : "outline"}
           onClick={() => setShowFilters(!showFilters)}
@@ -192,7 +213,10 @@ export default function PlantSearchBar({
           <SlidersHorizontal className="h-4 w-4 mr-2" />
           Filters
           {getActiveFilterCount() > 0 && (
-            <Badge variant="secondary" className="ml-2 h-5 w-5 rounded-full p-0 flex items-center justify-center text-xs">
+            <Badge
+              variant="secondary"
+              className="ml-2 h-5 w-5 rounded-full p-0 flex items-center justify-center text-xs"
+            >
               {getActiveFilterCount()}
             </Badge>
           )}
@@ -203,7 +227,7 @@ export default function PlantSearchBar({
       {totalResults !== undefined && (
         <div className="flex items-center justify-between text-sm text-muted-foreground">
           <span>
-            {totalResults} {totalResults === 1 ? 'plant' : 'plants'} found
+            {totalResults} {totalResults === 1 ? "plant" : "plants"} found
             {searchQuery && ` for "${searchQuery}"`}
           </span>
           {getActiveFilterCount() > 0 && (
@@ -223,7 +247,11 @@ export default function PlantSearchBar({
       {getActiveFilters().length > 0 && (
         <div className="flex flex-wrap gap-2">
           {getActiveFilters().map((filter, index) => (
-            <Badge key={index} variant="secondary" className="flex items-center gap-1">
+            <Badge
+              key={index}
+              variant="secondary"
+              className="flex items-center gap-1"
+            >
               {filter.label}
               <Button
                 variant="ghost"
@@ -243,7 +271,6 @@ export default function PlantSearchBar({
         <CollapsibleContent>
           <Card>
             <CardContent className="p-6 space-y-6">
-              
               {/* Categories */}
               <div>
                 <h3 className="font-medium mb-3">Categories</h3>
@@ -251,9 +278,15 @@ export default function PlantSearchBar({
                   {categories.map((category) => (
                     <Button
                       key={category.id}
-                      variant={filters.categories.includes(category.id) ? "default" : "outline"}
+                      variant={
+                        filters.categories.includes(category.id)
+                          ? "default"
+                          : "outline"
+                      }
                       size="sm"
-                      onClick={() => handleFilterToggle("categories", category.id)}
+                      onClick={() =>
+                        handleFilterToggle("categories", category.id)
+                      }
                       className="justify-start h-auto py-2"
                     >
                       <span className="mr-2">{category.icon}</span>
@@ -272,9 +305,15 @@ export default function PlantSearchBar({
                   {difficultyOptions.map((option) => (
                     <Button
                       key={option.id}
-                      variant={filters.difficulty.includes(option.id) ? "default" : "outline"}
+                      variant={
+                        filters.difficulty.includes(option.id)
+                          ? "default"
+                          : "outline"
+                      }
                       size="sm"
-                      onClick={() => handleFilterToggle("difficulty", option.id)}
+                      onClick={() =>
+                        handleFilterToggle("difficulty", option.id)
+                      }
                     >
                       {option.label}
                     </Button>
@@ -286,7 +325,6 @@ export default function PlantSearchBar({
 
               {/* Growing Conditions */}
               <div className="grid md:grid-cols-2 gap-6">
-                
                 {/* Sunlight Requirements */}
                 <div>
                   <h3 className="font-medium mb-3">Sunlight</h3>
@@ -294,9 +332,15 @@ export default function PlantSearchBar({
                     {sunlightOptions.map((option) => (
                       <Button
                         key={option.id}
-                        variant={filters.sunlight.includes(option.id) ? "default" : "outline"}
+                        variant={
+                          filters.sunlight.includes(option.id)
+                            ? "default"
+                            : "outline"
+                        }
                         size="sm"
-                        onClick={() => handleFilterToggle("sunlight", option.id)}
+                        onClick={() =>
+                          handleFilterToggle("sunlight", option.id)
+                        }
                         className="w-full justify-start"
                       >
                         {option.label}
@@ -312,7 +356,11 @@ export default function PlantSearchBar({
                     {waterOptions.map((option) => (
                       <Button
                         key={option.id}
-                        variant={filters.water.includes(option.id) ? "default" : "outline"}
+                        variant={
+                          filters.water.includes(option.id)
+                            ? "default"
+                            : "outline"
+                        }
                         size="sm"
                         onClick={() => handleFilterToggle("water", option.id)}
                         className="w-full justify-start"
@@ -333,7 +381,11 @@ export default function PlantSearchBar({
                   {toxicityOptions.map((option) => (
                     <Button
                       key={option.id}
-                      variant={filters.toxicity.includes(option.id) ? "default" : "outline"}
+                      variant={
+                        filters.toxicity.includes(option.id)
+                          ? "default"
+                          : "outline"
+                      }
                       size="sm"
                       onClick={() => handleFilterToggle("toxicity", option.id)}
                     >
@@ -352,7 +404,9 @@ export default function PlantSearchBar({
                   {popularTags.map((tag) => (
                     <Button
                       key={tag}
-                      variant={filters.tags.includes(tag) ? "default" : "outline"}
+                      variant={
+                        filters.tags.includes(tag) ? "default" : "outline"
+                      }
                       size="sm"
                       onClick={() => handleFilterToggle("tags", tag)}
                       className="text-xs"
@@ -362,7 +416,6 @@ export default function PlantSearchBar({
                   ))}
                 </div>
               </div>
-
             </CardContent>
           </Card>
         </CollapsibleContent>

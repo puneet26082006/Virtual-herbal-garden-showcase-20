@@ -2,8 +2,20 @@ import "dotenv/config";
 import express from "express";
 import cors from "cors";
 import { handleDemo } from "./routes/demo";
-import { getPlants, getPlantById, getPlantCategories, getFeaturedPlants, getPlantStatistics } from "./routes/plants";
-import { login, register, getCurrentUser, logout, requireAdmin } from "./routes/auth";
+import {
+  getPlants,
+  getPlantById,
+  getPlantCategories,
+  getFeaturedPlants,
+  getPlantStatistics,
+} from "./routes/plants";
+import {
+  login,
+  register,
+  getCurrentUser,
+  logout,
+  requireAdmin,
+} from "./routes/auth";
 
 export function createServer() {
   const app = express();
@@ -39,9 +51,19 @@ export function createServer() {
     // Mock admin endpoint - return sanitized user list
     res.json({
       users: [
-        { id: "1", email: "admin@virtualgarden.com", name: "Garden Admin", role: "admin" },
-        { id: "2", email: "user@example.com", name: "Plant Enthusiast", role: "user" }
-      ]
+        {
+          id: "1",
+          email: "admin@virtualgarden.com",
+          name: "Garden Admin",
+          role: "admin",
+        },
+        {
+          id: "2",
+          email: "user@example.com",
+          name: "Plant Enthusiast",
+          role: "user",
+        },
+      ],
     });
   });
 

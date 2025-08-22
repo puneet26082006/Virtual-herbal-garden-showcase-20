@@ -3,21 +3,27 @@ import { Link } from "react-router-dom";
 import Layout from "@/components/Layout";
 import PlantSearchBar from "@/components/PlantSearchBar";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Alert, AlertDescription } from "@/components/ui/alert";
-import { 
-  ChevronLeft, 
-  ChevronRight, 
-  Droplets, 
-  Sun, 
-  Thermometer, 
+import {
+  ChevronLeft,
+  ChevronRight,
+  Droplets,
+  Sun,
+  Thermometer,
   AlertTriangle,
   Leaf,
   Clock,
   MapPin,
-  Scissors
+  Scissors,
 } from "lucide-react";
 import { Plant, PlantCategory, PlantsResponse } from "@shared/api";
 
@@ -47,7 +53,7 @@ export default function Plants() {
     sunlight: [],
     water: [],
     toxicity: [],
-    tags: []
+    tags: [],
   });
 
   const plantsPerPage = 12;
@@ -77,7 +83,7 @@ export default function Plants() {
   const fetchPlants = async () => {
     setSearching(true);
     setError(null);
-    
+
     try {
       const params = new URLSearchParams({
         page: currentPage.toString(),
@@ -86,27 +92,35 @@ export default function Plants() {
 
       if (currentFilters.query) params.append("q", currentFilters.query);
       if (currentFilters.categories.length > 0) {
-        currentFilters.categories.forEach(cat => params.append("category", cat));
+        currentFilters.categories.forEach((cat) =>
+          params.append("category", cat),
+        );
       }
       if (currentFilters.difficulty.length > 0) {
-        currentFilters.difficulty.forEach(diff => params.append("difficulty", diff));
+        currentFilters.difficulty.forEach((diff) =>
+          params.append("difficulty", diff),
+        );
       }
       if (currentFilters.sunlight.length > 0) {
-        currentFilters.sunlight.forEach(sun => params.append("sunlight", sun));
+        currentFilters.sunlight.forEach((sun) =>
+          params.append("sunlight", sun),
+        );
       }
       if (currentFilters.water.length > 0) {
-        currentFilters.water.forEach(water => params.append("water", water));
+        currentFilters.water.forEach((water) => params.append("water", water));
       }
       if (currentFilters.toxicity.length > 0) {
-        currentFilters.toxicity.forEach(tox => params.append("toxicity", tox));
+        currentFilters.toxicity.forEach((tox) =>
+          params.append("toxicity", tox),
+        );
       }
       if (currentFilters.tags.length > 0) {
-        currentFilters.tags.forEach(tag => params.append("tags", tag));
+        currentFilters.tags.forEach((tag) => params.append("tags", tag));
       }
 
       const response = await fetch(`/api/plants?${params}`);
       if (!response.ok) throw new Error("Failed to fetch plants");
-      
+
       const data: PlantsResponse = await response.json();
       setPlants(data.plants);
       setTotalResults(data.total);
@@ -127,43 +141,60 @@ export default function Plants() {
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   const getDifficultyColor = (difficulty: string) => {
     switch (difficulty) {
-      case 'easy': return 'bg-green-100 text-green-800';
-      case 'moderate': return 'bg-yellow-100 text-yellow-800';
-      case 'challenging': return 'bg-red-100 text-red-800';
-      default: return 'bg-gray-100 text-gray-800';
+      case "easy":
+        return "bg-green-100 text-green-800";
+      case "moderate":
+        return "bg-yellow-100 text-yellow-800";
+      case "challenging":
+        return "bg-red-100 text-red-800";
+      default:
+        return "bg-gray-100 text-gray-800";
     }
   };
 
   const getToxicityIcon = (toxicity: string) => {
     switch (toxicity) {
-      case 'non-toxic': return { icon: '✅', color: 'text-green-600' };
-      case 'mildly-toxic': return { icon: '⚠️', color: 'text-yellow-600' };
-      case 'toxic': return { icon: '⚠️', color: 'text-orange-600' };
-      case 'highly-toxic': return { icon: '☠️', color: 'text-red-600' };
-      default: return { icon: '❓', color: 'text-gray-600' };
+      case "non-toxic":
+        return { icon: "✅", color: "text-green-600" };
+      case "mildly-toxic":
+        return { icon: "⚠️", color: "text-yellow-600" };
+      case "toxic":
+        return { icon: "⚠️", color: "text-orange-600" };
+      case "highly-toxic":
+        return { icon: "☠️", color: "text-red-600" };
+      default:
+        return { icon: "❓", color: "text-gray-600" };
     }
   };
 
   const getSunlightIcon = (sunlight: string) => {
     switch (sunlight) {
-      case 'full-sun': return '☀️';
-      case 'partial-sun': return '🌤️';
-      case 'shade': return '🌑';
-      default: return '🌞';
+      case "full-sun":
+        return "☀️";
+      case "partial-sun":
+        return "🌤️";
+      case "shade":
+        return "🌑";
+      default:
+        return "🌞";
     }
   };
 
   const getWaterIcon = (water: string) => {
     switch (water) {
-      case 'low': return '💧';
-      case 'moderate': return '💧💧';
-      case 'high': return '💧💧💧';
-      default: return '💧';
+      case "low":
+        return "💧";
+      case "moderate":
+        return "💧💧";
+      case "high":
+        return "💧💧💧";
+      default:
+        return "💧";
     }
   };
 
@@ -187,15 +218,15 @@ export default function Plants() {
   return (
     <Layout>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        
         {/* Header */}
         <div className="mb-8">
           <h1 className="text-4xl font-bold text-foreground mb-4">
             Plant Species Database
           </h1>
           <p className="text-lg text-muted-foreground max-w-3xl">
-            Explore our comprehensive collection of over 400 plant species. Search by name, 
-            category, growing conditions, or properties to find the perfect plants for your garden.
+            Explore our comprehensive collection of over 400 plant species.
+            Search by name, category, growing conditions, or properties to find
+            the perfect plants for your garden.
           </p>
         </div>
 
@@ -203,10 +234,10 @@ export default function Plants() {
         <div className="mb-8">
           <PlantSearchBar
             onSearch={handleSearch}
-            categories={categories.map(cat => ({ 
-              id: cat.id, 
-              name: cat.name, 
-              icon: cat.icon 
+            categories={categories.map((cat) => ({
+              id: cat.id,
+              name: cat.name,
+              icon: cat.icon,
             }))}
             totalResults={totalResults}
             isLoading={searching}
@@ -231,10 +262,12 @@ export default function Plants() {
                   key={category.id}
                   variant="outline"
                   className="h-auto py-3 flex flex-col items-center space-y-2"
-                  onClick={() => handleSearch({
-                    ...currentFilters,
-                    categories: [category.id]
-                  })}
+                  onClick={() =>
+                    handleSearch({
+                      ...currentFilters,
+                      categories: [category.id],
+                    })
+                  }
                 >
                   <span className="text-2xl">{category.icon}</span>
                   <span className="text-xs text-center leading-tight">
@@ -253,34 +286,44 @@ export default function Plants() {
         {plants.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-8">
             {plants.map((plant) => {
-              const toxicity = getToxicityIcon(plant.toxicity || 'non-toxic');
+              const toxicity = getToxicityIcon(plant.toxicity || "non-toxic");
               return (
-                <Card key={plant.id} className="group hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+                <Card
+                  key={plant.id}
+                  className="group hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
+                >
                   <CardHeader className="pb-3">
                     <div className="flex items-start justify-between">
                       <div className="text-4xl mb-2 group-hover:scale-110 transition-transform">
                         {plant.image}
                       </div>
                       <div className="flex items-center space-x-1">
-                        <span className={toxicity.color} title={`Toxicity: ${plant.toxicity}`}>
+                        <span
+                          className={toxicity.color}
+                          title={`Toxicity: ${plant.toxicity}`}
+                        >
                           {toxicity.icon}
                         </span>
                       </div>
                     </div>
-                    <CardTitle className="text-lg leading-tight">{plant.name}</CardTitle>
+                    <CardTitle className="text-lg leading-tight">
+                      {plant.name}
+                    </CardTitle>
                     <CardDescription className="italic text-sm">
                       {plant.scientificName}
                     </CardDescription>
                   </CardHeader>
-                  
+
                   <CardContent className="space-y-4">
-                    
                     {/* Category & Difficulty */}
                     <div className="flex items-center justify-between">
                       <Badge variant="outline" className="text-xs">
-                        {categories.find(cat => cat.id === plant.category)?.name || plant.category}
+                        {categories.find((cat) => cat.id === plant.category)
+                          ?.name || plant.category}
                       </Badge>
-                      <Badge className={`text-xs ${getDifficultyColor(plant.difficulty)}`}>
+                      <Badge
+                        className={`text-xs ${getDifficultyColor(plant.difficulty)}`}
+                      >
                         {plant.difficulty}
                       </Badge>
                     </div>
@@ -288,22 +331,37 @@ export default function Plants() {
                     {/* Growing Conditions */}
                     <div className="grid grid-cols-3 gap-2 text-center">
                       <div className="flex flex-col items-center space-y-1">
-                        <span className="text-lg" title={`Sunlight: ${plant.growingConditions.sunlight}`}>
+                        <span
+                          className="text-lg"
+                          title={`Sunlight: ${plant.growingConditions.sunlight}`}
+                        >
                           {getSunlightIcon(plant.growingConditions.sunlight)}
                         </span>
-                        <span className="text-xs text-muted-foreground">Sun</span>
+                        <span className="text-xs text-muted-foreground">
+                          Sun
+                        </span>
                       </div>
                       <div className="flex flex-col items-center space-y-1">
-                        <span className="text-lg" title={`Water: ${plant.growingConditions.water}`}>
+                        <span
+                          className="text-lg"
+                          title={`Water: ${plant.growingConditions.water}`}
+                        >
                           {getWaterIcon(plant.growingConditions.water)}
                         </span>
-                        <span className="text-xs text-muted-foreground">Water</span>
+                        <span className="text-xs text-muted-foreground">
+                          Water
+                        </span>
                       </div>
                       <div className="flex flex-col items-center space-y-1">
-                        <span className="text-lg" title={`Native: ${plant.nativeRegion}`}>
+                        <span
+                          className="text-lg"
+                          title={`Native: ${plant.nativeRegion}`}
+                        >
                           🌍
                         </span>
-                        <span className="text-xs text-muted-foreground">Origin</span>
+                        <span className="text-xs text-muted-foreground">
+                          Origin
+                        </span>
                       </div>
                     </div>
 
@@ -319,7 +377,11 @@ export default function Plants() {
                       </h4>
                       <div className="flex flex-wrap gap-1">
                         {plant.uses.slice(0, 3).map((use, index) => (
-                          <Badge key={index} variant="secondary" className="text-xs">
+                          <Badge
+                            key={index}
+                            variant="secondary"
+                            className="text-xs"
+                          >
                             {use}
                           </Badge>
                         ))}
@@ -335,7 +397,11 @@ export default function Plants() {
                     {plant.tags && plant.tags.length > 0 && (
                       <div className="flex flex-wrap gap-1">
                         {plant.tags.slice(0, 2).map((tag, index) => (
-                          <Badge key={index} variant="outline" className="text-xs">
+                          <Badge
+                            key={index}
+                            variant="outline"
+                            className="text-xs"
+                          >
                             #{tag}
                           </Badge>
                         ))}
@@ -353,30 +419,35 @@ export default function Plants() {
               );
             })}
           </div>
-        ) : !loading && (
-          <div className="text-center py-12">
-            <div className="text-6xl mb-4">🔍</div>
-            <h3 className="text-xl font-semibold text-foreground mb-2">
-              No plants found
-            </h3>
-            <p className="text-muted-foreground mb-4">
-              Try adjusting your search criteria or browse our categories above.
-            </p>
-            <Button 
-              variant="outline" 
-              onClick={() => handleSearch({
-                query: "",
-                categories: [],
-                difficulty: [],
-                sunlight: [],
-                water: [],
-                toxicity: [],
-                tags: []
-              })}
-            >
-              Clear all filters
-            </Button>
-          </div>
+        ) : (
+          !loading && (
+            <div className="text-center py-12">
+              <div className="text-6xl mb-4">🔍</div>
+              <h3 className="text-xl font-semibold text-foreground mb-2">
+                No plants found
+              </h3>
+              <p className="text-muted-foreground mb-4">
+                Try adjusting your search criteria or browse our categories
+                above.
+              </p>
+              <Button
+                variant="outline"
+                onClick={() =>
+                  handleSearch({
+                    query: "",
+                    categories: [],
+                    difficulty: [],
+                    sunlight: [],
+                    water: [],
+                    toxicity: [],
+                    tags: [],
+                  })
+                }
+              >
+                Clear all filters
+              </Button>
+            </div>
+          )
         )}
 
         {/* Pagination */}
@@ -391,7 +462,7 @@ export default function Plants() {
               <ChevronLeft className="h-4 w-4 mr-1" />
               Previous
             </Button>
-            
+
             {/* Page Numbers */}
             <div className="flex items-center space-x-1">
               {Array.from({ length: Math.min(5, totalPages) }, (_, i) => {

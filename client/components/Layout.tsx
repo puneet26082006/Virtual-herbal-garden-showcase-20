@@ -56,13 +56,21 @@ export default function Layout({ children }: LayoutProps) {
             {/* Auth Buttons */}
             <div className="hidden md:flex items-center space-x-4">
               <Link to="/login">
-                <Button variant="ghost" size="sm" className="flex items-center space-x-2">
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  className="flex items-center space-x-2"
+                >
                   <User className="h-4 w-4" />
                   <span>Login</span>
                 </Button>
               </Link>
               <Link to="/admin">
-                <Button variant="outline" size="sm" className="flex items-center space-x-2">
+                <Button
+                  variant="outline"
+                  size="sm"
+                  className="flex items-center space-x-2"
+                >
                   <Shield className="h-4 w-4" />
                   <span>Admin</span>
                 </Button>
@@ -140,33 +148,69 @@ export default function Layout({ children }: LayoutProps) {
                 <span className="text-xl font-bold">VirtualGarden</span>
               </div>
               <p className="text-garden-sage mb-4 max-w-md">
-                Discover the beauty and wisdom of nature through our comprehensive
-                virtual garden. Learn about plant species, their uses, and create
-                your own digital botanical sanctuary.
+                Discover the beauty and wisdom of nature through our
+                comprehensive virtual garden. Learn about plant species, their
+                uses, and create your own digital botanical sanctuary.
               </p>
             </div>
-            
+
             <div>
               <h3 className="text-lg font-semibold mb-4">Explore</h3>
               <ul className="space-y-2">
-                <li><Link to="/plants" className="text-garden-sage hover:text-garden-mint transition-colors">Plant Species</Link></li>
-                <li><Link to="/garden" className="text-garden-sage hover:text-garden-mint transition-colors">Virtual Garden</Link></li>
-                <li><Link to="/about" className="text-garden-sage hover:text-garden-mint transition-colors">About Us</Link></li>
+                <li>
+                  <Link
+                    to="/plants"
+                    className="text-garden-sage hover:text-garden-mint transition-colors"
+                  >
+                    Plant Species
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/garden"
+                    className="text-garden-sage hover:text-garden-mint transition-colors"
+                  >
+                    Virtual Garden
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/about"
+                    className="text-garden-sage hover:text-garden-mint transition-colors"
+                  >
+                    About Us
+                  </Link>
+                </li>
               </ul>
             </div>
-            
+
             <div>
               <h3 className="text-lg font-semibold mb-4">Account</h3>
               <ul className="space-y-2">
-                <li><Link to="/login" className="text-garden-sage hover:text-garden-mint transition-colors">Login</Link></li>
-                <li><Link to="/admin" className="text-garden-sage hover:text-garden-mint transition-colors">Admin Panel</Link></li>
+                <li>
+                  <Link
+                    to="/login"
+                    className="text-garden-sage hover:text-garden-mint transition-colors"
+                  >
+                    Login
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/admin"
+                    className="text-garden-sage hover:text-garden-mint transition-colors"
+                  >
+                    Admin Panel
+                  </Link>
+                </li>
               </ul>
             </div>
           </div>
-          
+
           <div className="border-t border-garden-moss mt-8 pt-8 text-center">
             <p className="text-garden-sage">
-              © 2024 VirtualGarden. All rights reserved. Cultivating knowledge, growing together.
+              © 2024 VirtualGarden. All rights reserved. Cultivating knowledge,
+              growing together.
             </p>
           </div>
         </div>

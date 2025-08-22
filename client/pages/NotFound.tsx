@@ -24,8 +24,8 @@ const NotFound = () => {
               Oops! This garden path doesn't exist
             </h2>
             <p className="text-lg text-muted-foreground max-w-md mx-auto">
-              It seems you've wandered off the beaten path. Let's get you back to
-              exploring our beautiful virtual garden.
+              It seems you've wandered off the beaten path. Let's get you back
+              to exploring our beautiful virtual garden.
             </p>
           </div>
 

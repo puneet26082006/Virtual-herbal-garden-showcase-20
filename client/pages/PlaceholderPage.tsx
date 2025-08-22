@@ -10,10 +10,10 @@ interface PlaceholderPageProps {
   icon?: React.ReactNode;
 }
 
-export default function PlaceholderPage({ 
-  title, 
-  description, 
-  icon = <Construction className="h-12 w-12" /> 
+export default function PlaceholderPage({
+  title,
+  description,
+  icon = <Construction className="h-12 w-12" />,
 }: PlaceholderPageProps) {
   return (
     <Layout>
@@ -29,7 +29,7 @@ export default function PlaceholderPage({
             <p className="text-muted-foreground">{description}</p>
             <div className="space-y-3">
               <p className="text-sm text-muted-foreground">
-                This page is under development. Please continue the conversation 
+                This page is under development. Please continue the conversation
                 to help build out this section of the application.
               </p>
               <Link to="/">

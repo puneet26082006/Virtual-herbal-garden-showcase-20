@@ -2,7 +2,13 @@ import { useState, useEffect } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import Layout from "@/components/Layout";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { Alert, AlertDescription } from "@/components/ui/alert";
@@ -23,7 +29,7 @@ import {
   CheckCircle,
   Clock,
   Ruler,
-  Home
+  Home,
 } from "lucide-react";
 import { Plant } from "@shared/api";
 
@@ -43,7 +49,7 @@ export default function PlantDetail() {
   const fetchPlant = async (plantId: string) => {
     setLoading(true);
     setError(null);
-    
+
     try {
       const response = await fetch(`/api/plants/${plantId}`);
       if (!response.ok) {
@@ -54,7 +60,7 @@ export default function PlantDetail() {
         }
         return;
       }
-      
+
       const data = await response.json();
       setPlant(data);
     } catch (error) {
@@ -67,38 +73,75 @@ export default function PlantDetail() {
 
   const getDifficultyColor = (difficulty: string) => {
     switch (difficulty) {
-      case 'easy': return 'bg-green-100 text-green-800';
-      case 'moderate': return 'bg-yellow-100 text-yellow-800';
-      case 'challenging': return 'bg-red-100 text-red-800';
-      default: return 'bg-gray-100 text-gray-800';
+      case "easy":
+        return "bg-green-100 text-green-800";
+      case "moderate":
+        return "bg-yellow-100 text-yellow-800";
+      case "challenging":
+        return "bg-red-100 text-red-800";
+      default:
+        return "bg-gray-100 text-gray-800";
     }
   };
 
   const getToxicityInfo = (toxicity: string) => {
     switch (toxicity) {
-      case 'non-toxic': return { icon: <CheckCircle className="h-4 w-4 text-green-600" />, label: 'Non-toxic', color: 'text-green-600' };
-      case 'mildly-toxic': return { icon: <AlertTriangle className="h-4 w-4 text-yellow-600" />, label: 'Mildly Toxic', color: 'text-yellow-600' };
-      case 'toxic': return { icon: <AlertTriangle className="h-4 w-4 text-orange-600" />, label: 'Toxic', color: 'text-orange-600' };
-      case 'highly-toxic': return { icon: <AlertTriangle className="h-4 w-4 text-red-600" />, label: 'Highly Toxic', color: 'text-red-600' };
-      default: return { icon: <AlertTriangle className="h-4 w-4 text-gray-600" />, label: 'Unknown', color: 'text-gray-600' };
+      case "non-toxic":
+        return {
+          icon: <CheckCircle className="h-4 w-4 text-green-600" />,
+          label: "Non-toxic",
+          color: "text-green-600",
+        };
+      case "mildly-toxic":
+        return {
+          icon: <AlertTriangle className="h-4 w-4 text-yellow-600" />,
+          label: "Mildly Toxic",
+          color: "text-yellow-600",
+        };
+      case "toxic":
+        return {
+          icon: <AlertTriangle className="h-4 w-4 text-orange-600" />,
+          label: "Toxic",
+          color: "text-orange-600",
+        };
+      case "highly-toxic":
+        return {
+          icon: <AlertTriangle className="h-4 w-4 text-red-600" />,
+          label: "Highly Toxic",
+          color: "text-red-600",
+        };
+      default:
+        return {
+          icon: <AlertTriangle className="h-4 w-4 text-gray-600" />,
+          label: "Unknown",
+          color: "text-gray-600",
+        };
     }
   };
 
   const getSunlightIcon = (sunlight: string) => {
     switch (sunlight) {
-      case 'full-sun': return { icon: '☀️', label: 'Full Sun' };
-      case 'partial-sun': return { icon: '🌤️', label: 'Partial Sun' };
-      case 'shade': return { icon: '🌑', label: 'Shade' };
-      default: return { icon: '🌞', label: 'Variable' };
+      case "full-sun":
+        return { icon: "☀️", label: "Full Sun" };
+      case "partial-sun":
+        return { icon: "🌤️", label: "Partial Sun" };
+      case "shade":
+        return { icon: "🌑", label: "Shade" };
+      default:
+        return { icon: "🌞", label: "Variable" };
     }
   };
 
   const getWaterIcon = (water: string) => {
     switch (water) {
-      case 'low': return { icon: '💧', label: 'Low Water' };
-      case 'moderate': return { icon: '💧💧', label: 'Moderate Water' };
-      case 'high': return { icon: '💧💧💧', label: 'High Water' };
-      default: return { icon: '💧', label: 'Variable' };
+      case "low":
+        return { icon: "💧", label: "Low Water" };
+      case "moderate":
+        return { icon: "💧💧", label: "Moderate Water" };
+      case "high":
+        return { icon: "💧💧💧", label: "High Water" };
+      default:
+        return { icon: "💧", label: "Variable" };
     }
   };
 
@@ -127,18 +170,20 @@ export default function PlantDetail() {
     return (
       <Layout>
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          <Button variant="outline" onClick={() => navigate('/plants')} className="mb-6">
+          <Button
+            variant="outline"
+            onClick={() => navigate("/plants")}
+            className="mb-6"
+          >
             <ArrowLeft className="h-4 w-4 mr-2" />
             Back to Plants
           </Button>
-          
+
           <Alert>
             <AlertTriangle className="h-4 w-4" />
-            <AlertDescription>
-              {error || "Plant not found"}
-            </AlertDescription>
+            <AlertDescription>{error || "Plant not found"}</AlertDescription>
           </Alert>
-          
+
           <div className="text-center py-12">
             <div className="text-6xl mb-4">🌿</div>
             <h3 className="text-xl font-semibold text-foreground mb-2">
@@ -156,17 +201,16 @@ export default function PlantDetail() {
     );
   }
 
-  const toxicityInfo = getToxicityInfo(plant.toxicity || 'non-toxic');
+  const toxicityInfo = getToxicityInfo(plant.toxicity || "non-toxic");
   const sunlightInfo = getSunlightIcon(plant.growingConditions.sunlight);
   const waterInfo = getWaterIcon(plant.growingConditions.water);
 
   return (
     <Layout>
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        
         {/* Navigation */}
         <div className="flex items-center justify-between mb-6">
-          <Button variant="outline" onClick={() => navigate('/plants')}>
+          <Button variant="outline" onClick={() => navigate("/plants")}>
             <ArrowLeft className="h-4 w-4 mr-2" />
             Back to Plants
           </Button>
@@ -183,10 +227,8 @@ export default function PlantDetail() {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          
           {/* Main Content */}
           <div className="lg:col-span-2 space-y-6">
-            
             {/* Header */}
             <div className="space-y-4">
               <div className="flex items-center space-x-4">
@@ -203,9 +245,13 @@ export default function PlantDetail() {
                     <Badge className={getDifficultyColor(plant.difficulty)}>
                       {plant.difficulty} care
                     </Badge>
-                    <div className={`flex items-center space-x-1 ${toxicityInfo.color}`}>
+                    <div
+                      className={`flex items-center space-x-1 ${toxicityInfo.color}`}
+                    >
                       {toxicityInfo.icon}
-                      <span className="text-sm font-medium">{toxicityInfo.label}</span>
+                      <span className="text-sm font-medium">
+                        {toxicityInfo.label}
+                      </span>
                     </div>
                   </div>
                 </div>
@@ -231,7 +277,9 @@ export default function PlantDetail() {
             <Card>
               <CardHeader>
                 <CardTitle>Primary Uses</CardTitle>
-                <CardDescription>Common applications and benefits</CardDescription>
+                <CardDescription>
+                  Common applications and benefits
+                </CardDescription>
               </CardHeader>
               <CardContent>
                 <div className="flex flex-wrap gap-2">
@@ -245,26 +293,30 @@ export default function PlantDetail() {
             </Card>
 
             {/* Medicinal Properties */}
-            {plant.medicinalProperties && plant.medicinalProperties.length > 0 && (
-              <Card>
-                <CardHeader>
-                  <CardTitle className="flex items-center space-x-2">
-                    <Heart className="h-5 w-5 text-red-500" />
-                    <span>Medicinal Properties</span>
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="grid grid-cols-2 gap-3">
-                    {plant.medicinalProperties.map((property, index) => (
-                      <div key={index} className="flex items-center space-x-2">
-                        <CheckCircle className="h-4 w-4 text-green-600" />
-                        <span className="text-sm">{property}</span>
-                      </div>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-            )}
+            {plant.medicinalProperties &&
+              plant.medicinalProperties.length > 0 && (
+                <Card>
+                  <CardHeader>
+                    <CardTitle className="flex items-center space-x-2">
+                      <Heart className="h-5 w-5 text-red-500" />
+                      <span>Medicinal Properties</span>
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="grid grid-cols-2 gap-3">
+                      {plant.medicinalProperties.map((property, index) => (
+                        <div
+                          key={index}
+                          className="flex items-center space-x-2"
+                        >
+                          <CheckCircle className="h-4 w-4 text-green-600" />
+                          <span className="text-sm">{property}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </CardContent>
+                </Card>
+              )}
 
             {/* Culinary Uses */}
             {plant.culinaryUses && plant.culinaryUses.length > 0 && (
@@ -309,14 +361,12 @@ export default function PlantDetail() {
 
           {/* Sidebar */}
           <div className="space-y-6">
-            
             {/* Growing Conditions */}
             <Card>
               <CardHeader>
                 <CardTitle>Growing Conditions</CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
-                
                 {/* Sunlight */}
                 <div className="flex items-center justify-between">
                   <div className="flex items-center space-x-2">
@@ -325,7 +375,9 @@ export default function PlantDetail() {
                   </div>
                   <div className="flex items-center space-x-1">
                     <span className="text-sm">{sunlightInfo.icon}</span>
-                    <span className="text-sm text-muted-foreground">{sunlightInfo.label}</span>
+                    <span className="text-sm text-muted-foreground">
+                      {sunlightInfo.label}
+                    </span>
                   </div>
                 </div>
 
@@ -337,7 +389,9 @@ export default function PlantDetail() {
                   </div>
                   <div className="flex items-center space-x-1">
                     <span className="text-sm">{waterInfo.icon}</span>
-                    <span className="text-sm text-muted-foreground">{waterInfo.label}</span>
+                    <span className="text-sm text-muted-foreground">
+                      {waterInfo.label}
+                    </span>
                   </div>
                 </div>
 
@@ -393,7 +447,6 @@ export default function PlantDetail() {
                 <CardTitle>Plant Information</CardTitle>
               </CardHeader>
               <CardContent className="space-y-3">
-                
                 {/* Native Region */}
                 <div className="flex items-center justify-between">
                   <div className="flex items-center space-x-2">
@@ -440,7 +493,11 @@ export default function PlantDetail() {
                     </div>
                     <div className="flex flex-wrap gap-1">
                       {plant.propagation.map((method, index) => (
-                        <Badge key={index} variant="outline" className="text-xs">
+                        <Badge
+                          key={index}
+                          variant="outline"
+                          className="text-xs"
+                        >
                           {method}
                         </Badge>
                       ))}

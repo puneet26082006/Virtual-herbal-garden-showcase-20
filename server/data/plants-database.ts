@@ -5,10 +5,11 @@ export const plantCategories: PlantCategory[] = [
   {
     id: "medicinal",
     name: "Medicinal Herbs",
-    description: "Plants with therapeutic properties used in traditional and modern medicine",
+    description:
+      "Plants with therapeutic properties used in traditional and modern medicine",
     plantCount: 45,
     icon: "🌿",
-    color: "bg-green-100 text-green-800"
+    color: "bg-green-100 text-green-800",
   },
   {
     id: "culinary",
@@ -16,23 +17,25 @@ export const plantCategories: PlantCategory[] = [
     description: "Edible plants used for flavoring, seasoning, and cooking",
     plantCount: 38,
     icon: "🌱",
-    color: "bg-orange-100 text-orange-800"
+    color: "bg-orange-100 text-orange-800",
   },
   {
     id: "aromatic",
     name: "Aromatic Plants",
-    description: "Fragrant plants used for aromatherapy, perfumes, and essential oils",
+    description:
+      "Fragrant plants used for aromatherapy, perfumes, and essential oils",
     plantCount: 35,
     icon: "🌸",
-    color: "bg-purple-100 text-purple-800"
+    color: "bg-purple-100 text-purple-800",
   },
   {
     id: "flowering",
     name: "Flowering Plants",
-    description: "Ornamental plants grown primarily for their beautiful flowers",
+    description:
+      "Ornamental plants grown primarily for their beautiful flowers",
     plantCount: 52,
     icon: "🌺",
-    color: "bg-pink-100 text-pink-800"
+    color: "bg-pink-100 text-pink-800",
   },
   {
     id: "succulents",
@@ -40,15 +43,16 @@ export const plantCategories: PlantCategory[] = [
     description: "Water-storing plants adapted to arid conditions",
     plantCount: 42,
     icon: "🌵",
-    color: "bg-teal-100 text-teal-800"
+    color: "bg-teal-100 text-teal-800",
   },
   {
     id: "trees",
     name: "Trees & Shrubs",
-    description: "Woody plants including fruit trees, ornamental trees, and shrubs",
+    description:
+      "Woody plants including fruit trees, ornamental trees, and shrubs",
     plantCount: 48,
     icon: "🌳",
-    color: "bg-emerald-100 text-emerald-800"
+    color: "bg-emerald-100 text-emerald-800",
   },
   {
     id: "vegetables",
@@ -56,23 +60,25 @@ export const plantCategories: PlantCategory[] = [
     description: "Edible plants grown for food including vegetables and grains",
     plantCount: 44,
     icon: "🥬",
-    color: "bg-lime-100 text-lime-800"
+    color: "bg-lime-100 text-lime-800",
   },
   {
     id: "ornamental",
     name: "Ornamental Plants",
-    description: "Decorative plants grown for aesthetic appeal in gardens and landscapes",
+    description:
+      "Decorative plants grown for aesthetic appeal in gardens and landscapes",
     plantCount: 39,
     icon: "🪴",
-    color: "bg-indigo-100 text-indigo-800"
+    color: "bg-indigo-100 text-indigo-800",
   },
   {
     id: "tropical",
     name: "Tropical Plants",
-    description: "Plants native to tropical climates, often grown as houseplants",
+    description:
+      "Plants native to tropical climates, often grown as houseplants",
     plantCount: 36,
     icon: "🌴",
-    color: "bg-yellow-100 text-yellow-800"
+    color: "bg-yellow-100 text-yellow-800",
   },
   {
     id: "aquatic",
@@ -80,7 +86,7 @@ export const plantCategories: PlantCategory[] = [
     description: "Plants that grow in or near water environments",
     plantCount: 28,
     icon: "🪷",
-    color: "bg-blue-100 text-blue-800"
+    color: "bg-blue-100 text-blue-800",
   },
   {
     id: "climbing",
@@ -88,7 +94,7 @@ export const plantCategories: PlantCategory[] = [
     description: "Plants that climb or trail, perfect for vertical gardens",
     plantCount: 31,
     icon: "🍃",
-    color: "bg-green-100 text-green-800"
+    color: "bg-green-100 text-green-800",
   },
   {
     id: "grasses",
@@ -96,8 +102,8 @@ export const plantCategories: PlantCategory[] = [
     description: "Ornamental grasses and bamboo species for landscaping",
     plantCount: 25,
     icon: "🌾",
-    color: "bg-amber-100 text-amber-800"
-  }
+    color: "bg-amber-100 text-amber-800",
+  },
 ];
 
 // Comprehensive plant database (400+ species)
@@ -109,7 +115,8 @@ export const plantsDatabase: Plant[] = [
     scientificName: "Aloe barbadensis",
     family: "Asphodelaceae",
     category: "medicinal",
-    description: "Succulent plant known for its healing gel, used for skin conditions and burns.",
+    description:
+      "Succulent plant known for its healing gel, used for skin conditions and burns.",
     uses: ["Skin healing", "Burns treatment", "Digestive health", "Hair care"],
     growingConditions: {
       sunlight: "partial-sun",
@@ -120,7 +127,12 @@ export const plantsDatabase: Plant[] = [
       spacing: "12-18 inches",
       height: "12-24 inches",
     },
-    medicinalProperties: ["Anti-inflammatory", "Antimicrobial", "Healing", "Moisturizing"],
+    medicinalProperties: [
+      "Anti-inflammatory",
+      "Antimicrobial",
+      "Healing",
+      "Moisturizing",
+    ],
     toxicity: "non-toxic",
     difficulty: "easy",
     nativeRegion: "Arabian Peninsula",
@@ -130,11 +142,11 @@ export const plantsDatabase: Plant[] = [
       "Water deeply but infrequently",
       "Ensure good drainage",
       "Bright, indirect light",
-      "Allow soil to dry between waterings"
+      "Allow soil to dry between waterings",
     ],
     propagation: ["Offsets", "Leaf cuttings"],
     createdAt: "2024-01-01T00:00:00Z",
-    updatedAt: "2024-01-01T00:00:00Z"
+    updatedAt: "2024-01-01T00:00:00Z",
   },
   {
     id: "med-002",
@@ -142,8 +154,14 @@ export const plantsDatabase: Plant[] = [
     scientificName: "Echinacea purpurea",
     family: "Asteraceae",
     category: "medicinal",
-    description: "Purple coneflower native to North America, renowned for immune system support.",
-    uses: ["Immune support", "Cold prevention", "Wound healing", "Anti-inflammatory"],
+    description:
+      "Purple coneflower native to North America, renowned for immune system support.",
+    uses: [
+      "Immune support",
+      "Cold prevention",
+      "Wound healing",
+      "Anti-inflammatory",
+    ],
     growingConditions: {
       sunlight: "full-sun",
       water: "moderate",
@@ -152,9 +170,14 @@ export const plantsDatabase: Plant[] = [
       climate: "Temperate",
       spacing: "18-24 inches",
       height: "2-4 feet",
-      bloomTime: "Summer to early fall"
+      bloomTime: "Summer to early fall",
     },
-    medicinalProperties: ["Immunostimulant", "Anti-inflammatory", "Antimicrobial", "Antiviral"],
+    medicinalProperties: [
+      "Immunostimulant",
+      "Anti-inflammatory",
+      "Antimicrobial",
+      "Antiviral",
+    ],
     toxicity: "non-toxic",
     difficulty: "easy",
     nativeRegion: "North America",
@@ -164,13 +187,13 @@ export const plantsDatabase: Plant[] = [
       "Full sun exposure",
       "Regular watering during growing season",
       "Deadhead for continued blooming",
-      "Divide every 3-4 years"
+      "Divide every 3-4 years",
     ],
     companionPlants: ["Black-eyed Susan", "Bee Balm", "Wild Bergamot"],
     propagation: ["Seeds", "Division", "Root cuttings"],
     harvestTime: "Late summer to fall (roots), Summer (flowers)",
     createdAt: "2024-01-01T00:00:00Z",
-    updatedAt: "2024-01-01T00:00:00Z"
+    updatedAt: "2024-01-01T00:00:00Z",
   },
   {
     id: "med-003",
@@ -178,7 +201,8 @@ export const plantsDatabase: Plant[] = [
     scientificName: "Curcuma longa",
     family: "Zingiberaceae",
     category: "medicinal",
-    description: "Tropical rhizomatous herbaceous perennial plant with powerful anti-inflammatory properties.",
+    description:
+      "Tropical rhizomatous herbaceous perennial plant with powerful anti-inflammatory properties.",
     uses: ["Anti-inflammatory", "Joint health", "Digestive aid", "Antioxidant"],
     growingConditions: {
       sunlight: "partial-sun",
@@ -187,9 +211,14 @@ export const plantsDatabase: Plant[] = [
       hardiness: "USDA zones 8-11",
       climate: "Tropical to subtropical",
       spacing: "8-10 inches",
-      height: "3-4 feet"
+      height: "3-4 feet",
     },
-    medicinalProperties: ["Anti-inflammatory", "Antioxidant", "Antimicrobial", "Hepatoprotective"],
+    medicinalProperties: [
+      "Anti-inflammatory",
+      "Antioxidant",
+      "Antimicrobial",
+      "Hepatoprotective",
+    ],
     culinaryUses: ["Spice", "Tea", "Curry powder", "Golden milk"],
     toxicity: "non-toxic",
     difficulty: "moderate",
@@ -200,12 +229,12 @@ export const plantsDatabase: Plant[] = [
       "Consistent moisture",
       "Warm temperatures (68-86°F)",
       "High humidity",
-      "Rich, organic soil"
+      "Rich, organic soil",
     ],
     propagation: ["Rhizome division"],
     harvestTime: "8-12 months after planting",
     createdAt: "2024-01-01T00:00:00Z",
-    updatedAt: "2024-01-01T00:00:00Z"
+    updatedAt: "2024-01-01T00:00:00Z",
   },
   {
     id: "med-004",
@@ -213,8 +242,14 @@ export const plantsDatabase: Plant[] = [
     scientificName: "Ginkgo biloba",
     family: "Ginkgoaceae",
     category: "medicinal",
-    description: "Ancient tree species known for cognitive enhancement and circulatory benefits.",
-    uses: ["Memory enhancement", "Circulation improvement", "Antioxidant", "Neuroprotective"],
+    description:
+      "Ancient tree species known for cognitive enhancement and circulatory benefits.",
+    uses: [
+      "Memory enhancement",
+      "Circulation improvement",
+      "Antioxidant",
+      "Neuroprotective",
+    ],
     growingConditions: {
       sunlight: "full-sun",
       water: "moderate",
@@ -222,9 +257,14 @@ export const plantsDatabase: Plant[] = [
       hardiness: "USDA zones 3-8",
       climate: "Temperate",
       spacing: "20-35 feet",
-      height: "50-80 feet"
+      height: "50-80 feet",
     },
-    medicinalProperties: ["Neuroprotective", "Antioxidant", "Circulatory stimulant", "Anti-inflammatory"],
+    medicinalProperties: [
+      "Neuroprotective",
+      "Antioxidant",
+      "Circulatory stimulant",
+      "Anti-inflammatory",
+    ],
     toxicity: "mildly-toxic",
     difficulty: "easy",
     nativeRegion: "China",
@@ -234,11 +274,11 @@ export const plantsDatabase: Plant[] = [
       "Full sun to partial shade",
       "Regular watering when young",
       "Very adaptable and hardy",
-      "Minimal pruning needed"
+      "Minimal pruning needed",
     ],
     propagation: ["Seeds", "Cuttings"],
     createdAt: "2024-01-01T00:00:00Z",
-    updatedAt: "2024-01-01T00:00:00Z"
+    updatedAt: "2024-01-01T00:00:00Z",
   },
   {
     id: "med-005",
@@ -246,8 +286,14 @@ export const plantsDatabase: Plant[] = [
     scientificName: "Panax ginseng",
     family: "Araliaceae",
     category: "medicinal",
-    description: "Slow-growing perennial with fleshy roots, prized for adaptogenic properties.",
-    uses: ["Energy enhancement", "Stress adaptation", "Cognitive support", "Immune enhancement"],
+    description:
+      "Slow-growing perennial with fleshy roots, prized for adaptogenic properties.",
+    uses: [
+      "Energy enhancement",
+      "Stress adaptation",
+      "Cognitive support",
+      "Immune enhancement",
+    ],
     growingConditions: {
       sunlight: "shade",
       water: "moderate",
@@ -255,9 +301,14 @@ export const plantsDatabase: Plant[] = [
       hardiness: "USDA zones 3-7",
       climate: "Cool temperate",
       spacing: "6-8 inches",
-      height: "12-24 inches"
+      height: "12-24 inches",
     },
-    medicinalProperties: ["Adaptogenic", "Immunomodulatory", "Cognitive enhancer", "Anti-fatigue"],
+    medicinalProperties: [
+      "Adaptogenic",
+      "Immunomodulatory",
+      "Cognitive enhancer",
+      "Anti-fatigue",
+    ],
     toxicity: "non-toxic",
     difficulty: "challenging",
     nativeRegion: "Northeast Asia",
@@ -267,12 +318,12 @@ export const plantsDatabase: Plant[] = [
       "Deep shade (80-90%)",
       "Cool, moist conditions",
       "Rich, organic soil",
-      "Patience - takes 4-6 years to mature"
+      "Patience - takes 4-6 years to mature",
     ],
     propagation: ["Seeds", "Root division"],
     harvestTime: "4-6 years after planting",
     createdAt: "2024-01-01T00:00:00Z",
-    updatedAt: "2024-01-01T00:00:00Z"
+    updatedAt: "2024-01-01T00:00:00Z",
   },
 
   // CULINARY HERBS & SPICES (38 plants)
@@ -292,9 +343,14 @@ export const plantsDatabase: Plant[] = [
       climate: "Warm season crop",
       spacing: "6-12 inches",
       height: "12-24 inches",
-      bloomTime: "Summer"
+      bloomTime: "Summer",
     },
-    culinaryUses: ["Italian dishes", "Pesto", "Tomato pairings", "Asian cuisine"],
+    culinaryUses: [
+      "Italian dishes",
+      "Pesto",
+      "Tomato pairings",
+      "Asian cuisine",
+    ],
     medicinalProperties: ["Anti-inflammatory", "Antimicrobial", "Antioxidant"],
     toxicity: "non-toxic",
     difficulty: "easy",
@@ -305,13 +361,13 @@ export const plantsDatabase: Plant[] = [
       "Pinch flowers to encourage leaf growth",
       "Regular harvesting promotes growth",
       "Warm temperatures (above 50°F)",
-      "Keep soil consistently moist"
+      "Keep soil consistently moist",
     ],
     companionPlants: ["Tomatoes", "Peppers", "Oregano"],
     propagation: ["Seeds", "Cuttings"],
     harvestTime: "6-8 weeks from planting",
     createdAt: "2024-01-01T00:00:00Z",
-    updatedAt: "2024-01-01T00:00:00Z"
+    updatedAt: "2024-01-01T00:00:00Z",
   },
   {
     id: "cul-002",
@@ -329,10 +385,19 @@ export const plantsDatabase: Plant[] = [
       climate: "Mediterranean",
       spacing: "18-36 inches",
       height: "2-6 feet",
-      bloomTime: "Winter to spring"
+      bloomTime: "Winter to spring",
     },
-    culinaryUses: ["Roasted meats", "Potatoes", "Bread", "Mediterranean dishes"],
-    medicinalProperties: ["Antioxidant", "Memory enhancement", "Circulation improvement"],
+    culinaryUses: [
+      "Roasted meats",
+      "Potatoes",
+      "Bread",
+      "Mediterranean dishes",
+    ],
+    medicinalProperties: [
+      "Antioxidant",
+      "Memory enhancement",
+      "Circulation improvement",
+    ],
     toxicity: "non-toxic",
     difficulty: "easy",
     nativeRegion: "Mediterranean",
@@ -342,13 +407,13 @@ export const plantsDatabase: Plant[] = [
       "Excellent drainage essential",
       "Avoid overwatering",
       "Prune after flowering",
-      "Protect from harsh winds"
+      "Protect from harsh winds",
     ],
     companionPlants: ["Lavender", "Sage", "Thyme"],
     propagation: ["Cuttings", "Seeds"],
     harvestTime: "Year-round in mild climates",
     createdAt: "2024-01-01T00:00:00Z",
-    updatedAt: "2024-01-01T00:00:00Z"
+    updatedAt: "2024-01-01T00:00:00Z",
   },
 
   // AROMATIC PLANTS (35 plants)
@@ -358,7 +423,8 @@ export const plantsDatabase: Plant[] = [
     scientificName: "Lavandula angustifolia",
     family: "Lamiaceae",
     category: "aromatic",
-    description: "Fragrant purple-flowering plant beloved for its calming properties.",
+    description:
+      "Fragrant purple-flowering plant beloved for its calming properties.",
     uses: ["Aromatherapy", "Essential oils", "Stress relief", "Sleep aid"],
     growingConditions: {
       sunlight: "full-sun",
@@ -368,9 +434,14 @@ export const plantsDatabase: Plant[] = [
       climate: "Mediterranean",
       spacing: "12-18 inches",
       height: "1-3 feet",
-      bloomTime: "Summer"
+      bloomTime: "Summer",
     },
-    medicinalProperties: ["Sedative", "Anti-anxiety", "Anti-inflammatory", "Antiseptic"],
+    medicinalProperties: [
+      "Sedative",
+      "Anti-anxiety",
+      "Anti-inflammatory",
+      "Antiseptic",
+    ],
     toxicity: "non-toxic",
     difficulty: "easy",
     nativeRegion: "Mediterranean",
@@ -380,13 +451,13 @@ export const plantsDatabase: Plant[] = [
       "Excellent drainage required",
       "Minimal water once established",
       "Prune after flowering",
-      "Avoid heavy clay soils"
+      "Avoid heavy clay soils",
     ],
     companionPlants: ["Rosemary", "Thyme", "Sage"],
     propagation: ["Cuttings", "Seeds"],
     harvestTime: "Just before flowers fully open",
     createdAt: "2024-01-01T00:00:00Z",
-    updatedAt: "2024-01-01T00:00:00Z"
+    updatedAt: "2024-01-01T00:00:00Z",
   },
 
   // FLOWERING PLANTS (52 plants)
@@ -406,9 +477,13 @@ export const plantsDatabase: Plant[] = [
       climate: "Temperate",
       spacing: "3-6 feet",
       height: "3-8 feet",
-      bloomTime: "Spring to fall"
+      bloomTime: "Spring to fall",
     },
-    medicinalProperties: ["Anti-inflammatory", "Astringent", "Vitamin C source"],
+    medicinalProperties: [
+      "Anti-inflammatory",
+      "Astringent",
+      "Vitamin C source",
+    ],
     toxicity: "non-toxic",
     difficulty: "moderate",
     nativeRegion: "Asia and Europe",
@@ -418,14 +493,14 @@ export const plantsDatabase: Plant[] = [
       "Morning sun essential",
       "Good air circulation",
       "Regular fertilizing",
-      "Pruning in late winter"
+      "Pruning in late winter",
     ],
     companionPlants: ["Lavender", "Marigold", "Chives"],
     pests: ["Aphids", "Thrips", "Spider mites"],
     diseases: ["Black spot", "Powdery mildew", "Rust"],
     propagation: ["Cuttings", "Grafting"],
     createdAt: "2024-01-01T00:00:00Z",
-    updatedAt: "2024-01-01T00:00:00Z"
+    updatedAt: "2024-01-01T00:00:00Z",
   },
 
   // SUCCULENTS & CACTI (42 plants)
@@ -444,7 +519,7 @@ export const plantsDatabase: Plant[] = [
       hardiness: "USDA zones 10-11",
       climate: "Arid",
       spacing: "12-18 inches",
-      height: "1-3 feet"
+      height: "1-3 feet",
     },
     toxicity: "mildly-toxic",
     difficulty: "easy",
@@ -455,11 +530,11 @@ export const plantsDatabase: Plant[] = [
       "Water deeply but infrequently",
       "Bright, indirect light",
       "Allow soil to dry completely",
-      "Minimal fertilizer needs"
+      "Minimal fertilizer needs",
     ],
     propagation: ["Leaf cuttings", "Stem cuttings"],
     createdAt: "2024-01-01T00:00:00Z",
-    updatedAt: "2024-01-01T00:00:00Z"
+    updatedAt: "2024-01-01T00:00:00Z",
   },
 
   // TREES & SHRUBS (48 plants)
@@ -478,7 +553,7 @@ export const plantsDatabase: Plant[] = [
       hardiness: "USDA zones 5-8",
       climate: "Temperate",
       spacing: "10-25 feet",
-      height: "6-25 feet"
+      height: "6-25 feet",
     },
     toxicity: "non-toxic",
     difficulty: "moderate",
@@ -489,11 +564,11 @@ export const plantsDatabase: Plant[] = [
       "Protection from hot afternoon sun",
       "Consistent moisture",
       "Mulch around base",
-      "Minimal pruning needed"
+      "Minimal pruning needed",
     ],
     propagation: ["Seeds", "Grafting", "Cuttings"],
     createdAt: "2024-01-01T00:00:00Z",
-    updatedAt: "2024-01-01T00:00:00Z"
+    updatedAt: "2024-01-01T00:00:00Z",
   },
 
   // Add more comprehensive plant data here...
@@ -506,7 +581,8 @@ export const plantsDatabase: Plant[] = [
     scientificName: "Solanum lycopersicum",
     family: "Solanaceae",
     category: "vegetables",
-    description: "Popular warm-season vegetable fruit essential in many cuisines.",
+    description:
+      "Popular warm-season vegetable fruit essential in many cuisines.",
     uses: ["Fresh eating", "Cooking", "Canning", "Sauce making"],
     growingConditions: {
       sunlight: "full-sun",
@@ -516,7 +592,7 @@ export const plantsDatabase: Plant[] = [
       climate: "Warm season",
       spacing: "18-36 inches",
       height: "3-8 feet",
-      bloomTime: "Summer"
+      bloomTime: "Summer",
     },
     culinaryUses: ["Salads", "Sauces", "Soups", "Sandwiches"],
     toxicity: "non-toxic",
@@ -528,7 +604,7 @@ export const plantsDatabase: Plant[] = [
       "Support with cages or stakes",
       "Consistent watering",
       "Mulch to retain moisture",
-      "Regular fertilizing"
+      "Regular fertilizing",
     ],
     companionPlants: ["Basil", "Peppers", "Marigold"],
     pests: ["Hornworms", "Aphids", "Whiteflies"],
@@ -536,7 +612,7 @@ export const plantsDatabase: Plant[] = [
     propagation: ["Seeds", "Transplants"],
     harvestTime: "75-85 days from transplant",
     createdAt: "2024-01-01T00:00:00Z",
-    updatedAt: "2024-01-01T00:00:00Z"
+    updatedAt: "2024-01-01T00:00:00Z",
   },
 
   // TROPICAL PLANTS
@@ -546,7 +622,8 @@ export const plantsDatabase: Plant[] = [
     scientificName: "Strelitzia reginae",
     family: "Strelitziaceae",
     category: "tropical",
-    description: "Stunning tropical plant with orange and blue bird-like flowers.",
+    description:
+      "Stunning tropical plant with orange and blue bird-like flowers.",
     uses: ["Ornamental", "Cut flowers", "Houseplant", "Landscape"],
     growingConditions: {
       sunlight: "full-sun",
@@ -556,7 +633,7 @@ export const plantsDatabase: Plant[] = [
       climate: "Tropical to subtropical",
       spacing: "3-5 feet",
       height: "3-5 feet",
-      bloomTime: "Year-round in ideal conditions"
+      bloomTime: "Year-round in ideal conditions",
     },
     toxicity: "mildly-toxic",
     difficulty: "moderate",
@@ -567,12 +644,12 @@ export const plantsDatabase: Plant[] = [
       "High humidity preferred",
       "Consistent moisture",
       "Bright light essential for blooming",
-      "Regular fertilizing during growing season"
+      "Regular fertilizing during growing season",
     ],
     propagation: ["Division", "Seeds"],
     createdAt: "2024-01-01T00:00:00Z",
-    updatedAt: "2024-01-01T00:00:00Z"
-  }
+    updatedAt: "2024-01-01T00:00:00Z",
+  },
 
   // Note: This is a sample of the comprehensive database structure
   // The full implementation would include 400+ plants across all categories
@@ -582,9 +659,9 @@ export const plantsDatabase: Plant[] = [
 // Generate additional plants programmatically to reach 400+ total
 export function generateComprehensivePlantDatabase(): Plant[] {
   const baseDatabase = [...plantsDatabase];
-  
+
   // Add more plants for each category to reach target numbers
   // This would include the full 400+ plant dataset in a real implementation
-  
+
   return baseDatabase;
 }
