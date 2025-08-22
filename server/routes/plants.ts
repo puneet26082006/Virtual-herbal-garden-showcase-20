@@ -6,49 +6,101 @@ import { generateFullPlantDatabase, plantCategories } from "../data/comprehensiv
 const allPlants = generateFullPlantDatabase();
 const categories = plantCategories;
 
-// Get all plants with optional filtering
+// Get all plants with advanced filtering
 export const getPlants: RequestHandler = (req, res) => {
   try {
-    const { q, category, uses, page = 1, limit = 10 } = req.query;
-    
-    let filteredPlants = [...mockPlants];
-    
+    const {
+      q,
+      category,
+      difficulty,
+      sunlight,
+      water,
+      toxicity,
+      tags,
+      page = 1,
+      limit = 12
+    } = req.query;
+
+    let filteredPlants = [...allPlants];
+
     // Filter by search query
     if (q && typeof q === 'string') {
       const searchTerm = q.toLowerCase();
-      filteredPlants = filteredPlants.filter(plant => 
+      filteredPlants = filteredPlants.filter(plant =>
         plant.name.toLowerCase().includes(searchTerm) ||
         plant.scientificName.toLowerCase().includes(searchTerm) ||
         plant.description.toLowerCase().includes(searchTerm) ||
-        plant.uses.some(use => use.toLowerCase().includes(searchTerm))
+        plant.uses.some(use => use.toLowerCase().includes(searchTerm)) ||
+        (plant.medicinalProperties && plant.medicinalProperties.some(prop => prop.toLowerCase().includes(searchTerm))) ||
+        (plant.tags && plant.tags.some(tag => tag.toLowerCase().includes(searchTerm))) ||
+        plant.nativeRegion.toLowerCase().includes(searchTerm) ||
+        plant.family.toLowerCase().includes(searchTerm)
       );
     }
-    
-    // Filter by category (simplified - would be more complex with real categories)
-    if (category && typeof category === 'string') {
-      filteredPlants = filteredPlants.filter(plant => {
-        if (category === 'medicinal') return plant.medicinalProperties && plant.medicinalProperties.length > 0;
-        if (category === 'aromatic') return plant.uses.some(use => use.toLowerCase().includes('aroma'));
-        if (category === 'culinary') return plant.uses.some(use => use.toLowerCase().includes('tea') || use.toLowerCase().includes('flavor'));
-        return true;
-      });
+
+    // Filter by categories
+    if (category) {
+      const categories = Array.isArray(category) ? category : [category];
+      filteredPlants = filteredPlants.filter(plant =>
+        categories.includes(plant.category)
+      );
     }
-    
+
+    // Filter by difficulty
+    if (difficulty) {
+      const difficulties = Array.isArray(difficulty) ? difficulty : [difficulty];
+      filteredPlants = filteredPlants.filter(plant =>
+        difficulties.includes(plant.difficulty)
+      );
+    }
+
+    // Filter by sunlight requirements
+    if (sunlight) {
+      const sunlightReqs = Array.isArray(sunlight) ? sunlight : [sunlight];
+      filteredPlants = filteredPlants.filter(plant =>
+        sunlightReqs.includes(plant.growingConditions.sunlight)
+      );
+    }
+
+    // Filter by water requirements
+    if (water) {
+      const waterReqs = Array.isArray(water) ? water : [water];
+      filteredPlants = filteredPlants.filter(plant =>
+        waterReqs.includes(plant.growingConditions.water)
+      );
+    }
+
+    // Filter by toxicity
+    if (toxicity) {
+      const toxicityLevels = Array.isArray(toxicity) ? toxicity : [toxicity];
+      filteredPlants = filteredPlants.filter(plant =>
+        plant.toxicity && toxicityLevels.includes(plant.toxicity)
+      );
+    }
+
+    // Filter by tags
+    if (tags) {
+      const tagFilters = Array.isArray(tags) ? tags : [tags];
+      filteredPlants = filteredPlants.filter(plant =>
+        plant.tags && plant.tags.some(tag => tagFilters.includes(tag))
+      );
+    }
+
     // Pagination
     const pageNum = parseInt(page as string) || 1;
-    const limitNum = parseInt(limit as string) || 10;
+    const limitNum = parseInt(limit as string) || 12;
     const startIndex = (pageNum - 1) * limitNum;
     const endIndex = startIndex + limitNum;
-    
+
     const paginatedPlants = filteredPlants.slice(startIndex, endIndex);
-    
+
     const response: PlantsResponse = {
       plants: paginatedPlants,
       total: filteredPlants.length,
       page: pageNum,
       limit: limitNum
     };
-    
+
     res.json(response);
   } catch (error) {
     console.error('Error fetching plants:', error);
