@@ -112,12 +112,12 @@ export const getPlants: RequestHandler = (req, res) => {
 export const getPlantById: RequestHandler = (req, res) => {
   try {
     const { id } = req.params;
-    const plant = mockPlants.find(p => p.id === id);
-    
+    const plant = allPlants.find(p => p.id === id);
+
     if (!plant) {
       return res.status(404).json({ error: 'Plant not found' });
     }
-    
+
     res.json(plant);
   } catch (error) {
     console.error('Error fetching plant:', error);
@@ -128,7 +128,13 @@ export const getPlantById: RequestHandler = (req, res) => {
 // Get plant categories
 export const getPlantCategories: RequestHandler = (req, res) => {
   try {
-    res.json(mockCategories);
+    // Update plant counts based on actual data
+    const updatedCategories = categories.map(category => ({
+      ...category,
+      plantCount: allPlants.filter(plant => plant.category === category.id).length
+    }));
+
+    res.json(updatedCategories);
   } catch (error) {
     console.error('Error fetching categories:', error);
     res.status(500).json({ error: 'Internal server error' });
@@ -138,11 +144,46 @@ export const getPlantCategories: RequestHandler = (req, res) => {
 // Get featured plants (for homepage)
 export const getFeaturedPlants: RequestHandler = (req, res) => {
   try {
-    // Return first 3 plants as featured
-    const featuredPlants = mockPlants.slice(0, 3);
+    // Return a mix of plants from different categories
+    const featuredPlants = [
+      ...allPlants.filter(p => p.category === 'medicinal').slice(0, 1),
+      ...allPlants.filter(p => p.category === 'culinary').slice(0, 1),
+      ...allPlants.filter(p => p.category === 'aromatic').slice(0, 1),
+    ];
     res.json(featuredPlants);
   } catch (error) {
     console.error('Error fetching featured plants:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+};
+
+// Get plant statistics (for admin dashboard)
+export const getPlantStatistics: RequestHandler = (req, res) => {
+  try {
+    const stats = {
+      totalPlants: allPlants.length,
+      categoriesCount: categories.length,
+      byCategory: categories.map(category => ({
+        name: category.name,
+        count: allPlants.filter(plant => plant.category === category.id).length
+      })),
+      byDifficulty: {
+        easy: allPlants.filter(plant => plant.difficulty === 'easy').length,
+        moderate: allPlants.filter(plant => plant.difficulty === 'moderate').length,
+        challenging: allPlants.filter(plant => plant.difficulty === 'challenging').length
+      },
+      byToxicity: {
+        'non-toxic': allPlants.filter(plant => plant.toxicity === 'non-toxic').length,
+        'mildly-toxic': allPlants.filter(plant => plant.toxicity === 'mildly-toxic').length,
+        'toxic': allPlants.filter(plant => plant.toxicity === 'toxic').length,
+        'highly-toxic': allPlants.filter(plant => plant.toxicity === 'highly-toxic').length
+      },
+      recentlyAdded: allPlants.slice(-10) // Last 10 plants added
+    };
+
+    res.json(stats);
+  } catch (error) {
+    console.error('Error fetching plant statistics:', error);
     res.status(500).json({ error: 'Internal server error' });
   }
 };
