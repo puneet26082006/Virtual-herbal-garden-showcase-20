@@ -26,7 +26,7 @@ import {
 import {
   Settings,
   Users,
-  PlantIcon as Plant,
+  Leaf as Plant,
   BarChart3,
   Shield,
   UserPlus,
