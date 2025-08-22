@@ -17,6 +17,7 @@ export interface Plant {
   name: string;
   scientificName: string;
   family: string;
+  category: string;
   description: string;
   uses: string[];
   growingConditions: {
@@ -24,9 +25,24 @@ export interface Plant {
     water: "low" | "moderate" | "high";
     soil: string;
     hardiness: string;
+    climate: string;
+    spacing: string;
+    height: string;
+    bloomTime?: string;
   };
   medicinalProperties?: string[];
-  image?: string;
+  culinaryUses?: string[];
+  toxicity?: "non-toxic" | "mildly-toxic" | "toxic" | "highly-toxic";
+  difficulty: "easy" | "moderate" | "challenging";
+  nativeRegion: string;
+  image: string;
+  tags: string[];
+  careInstructions: string[];
+  companionPlants?: string[];
+  pests?: string[];
+  diseases?: string[];
+  harvestTime?: string;
+  propagation: string[];
   createdAt: string;
   updatedAt: string;
 }
@@ -36,6 +52,8 @@ export interface PlantCategory {
   name: string;
   description: string;
   plantCount: number;
+  icon: string;
+  color: string;
 }
 
 export interface PlantsResponse {
