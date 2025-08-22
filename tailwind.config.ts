@@ -57,6 +57,17 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+        // Garden-themed colors
+        garden: {
+          moss: "hsl(var(--garden-moss))",
+          sage: "hsl(var(--garden-sage))",
+          mint: "hsl(var(--garden-mint))",
+          forest: "hsl(var(--garden-forest))",
+          earth: "hsl(var(--garden-earth))",
+          bloom: "hsl(var(--garden-bloom))",
+          leaf: "hsl(var(--garden-leaf))",
+          bark: "hsl(var(--garden-bark))",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",
